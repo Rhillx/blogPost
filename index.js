@@ -7,7 +7,9 @@ const app = express();
 
 // html serve up
 app.use ('/', serveStatic('public', {
-  'index': ['index.html']
+  'index': ['index.html'],
+  'admin':['admin.html'],
+  'blogs':['blogs.html']
 }));
 
 app.use('/api', blogPostApi);

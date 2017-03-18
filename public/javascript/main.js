@@ -71,61 +71,55 @@
 
         function render(blogItems) {
             const container = document.querySelector('.js-blogPost');
-            container.innerHTML = "";
+            // container.innerHTML = "";
             for (const blogItem of blogItems) {
                 const section = document.createElement('section');
                 section.innerHTML =
-                    `<div class="inner">
-         <a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a>
-         <div class="content">
-           <h2 class="major">${blogItem.data.title}</h2>
-           <p>${blogItem.data.blog}</p>
-           <a href="#" class="special">Read more</a>
-         </div>
-       </div>`
+    `<div class="inner">
+      <a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a>
+      <div class="content">
+        <h2 class="major">${blogItem.data.title}</h2>
+        <p>${blogItem.data.body}</p>
+        <a href="#" class="special">Read more</a>
+      </div>
+    </div>`  ;
 
-                ;
+                section.classList.add('wrapper', 'spotlight', 'style1');
 
-
-
-                section.classList.add('wrapper spotlight style1');
-
-                container.appendChild('section');
+                container.appendChild(section);
 
 
-                document.querySelector('.js-todo-remove').addEventListener('click', (e) => {
-                    console.log('about to delete LOL')
-                    const {
-                        id
-                    } = blogItem;
-
-                    DELETE('/api/todo/' + blogItem.id)
-                        .then((data) => {
-                            render(data);
-                        })
-                        .catch((e) => {
-                            alert(e)
-                        });
-                });
-                li.querySelector('.js-todo-check').addEventListener('click', (e) => {
-                    console.log(blogItem);
-                    let isDone;
-                    if (blogItem.data.isDone) {
-                        isDone = false;
-                    } else {
-                        isDone = true;
-                    }
-
-                    PUT('/api/blog/' + blogItem.id, {
-                            isDone
-                        })
-                        .then((data) => {
-                            render(data);
-                        })
-                        .catch((e) => {
-                            alert(e)
-                        })
-                })
+                // document.querySelector('.js-todo-remove').addEventListener('click', (e) => {
+                //     console.log('about to delete LOL')
+                //     const {id} = blogItem;
+                //
+                //     DELETE('/api/todo/' + blogItem.id)
+                //         .then((data) => {
+                //             render(data);
+                //         })
+                //         .catch((e) => {
+                //             alert(e)
+                //         });
+                // });
+                // li.querySelector('.js-todo-check').addEventListener('click', (e) => {
+                //     console.log(blogItem);
+                //     let isDone;
+                //     if (blogItem.data.isDone) {
+                //         isDone = false;
+                //     } else {
+                //         isDone = true;
+                //     }
+                //
+                //     PUT('/api/blog/' + blogItem.id, {
+                //             isDone
+                //         })
+                //         .then((data) => {
+                //             render(data);
+                //         })
+                //         .catch((e) => {
+                //             alert(e)
+                //         })
+                // })
 
             }
         }
@@ -140,28 +134,26 @@
 
     const postBttn = document.querySelector('.js-postBtn'); postBttn.addEventListener('click', (e) => {
         console.log('trying to post');
-				console.log(blogItems);
+				// console.log(blogItems);
+    	const input = document.querySelector('.js-blogtitle');
+      const body = document.querySelector('.js-blogPostArea')
+    	input.setAttribute('disabled', 'disabled');
+      body.setAttribute('disabled', 'disabled');
 
-    });
-    // 	const input = document.querySelector('.js-blogtitle');
-    //   const body = document.querySelector('.js-blogPostArea')
-    // 	input.setAttribute('disabled', 'disabled');
-    //   body.setAttribute('disabled', 'disabled');
-    //
-    //
-    //
-    //
-    // 	POST('/api/blogs', {
-    // 		title: input.value,
-    //     blog: body.value
-    // 		when: new Date().getTime() + 9 * 60 * 60 * 1000
-    // 	}).then((data) => {
-    // 		input.removeAttribute('disabled');
-    //     body.removeAttribute('disabled');
-    // 		input.value = '';
-    //     body.value = '';
-    // 		render(data);
-    // 	});
-    // })
+
+
+
+    	POST('/api/blogs', {
+    		title: input.value,
+        blog: body.value,
+    		when: new Date().getTime() + 9 * 60 * 60 * 1000
+    	}).then((data) => {
+    		input.removeAttribute('disabled');
+        body.removeAttribute('disabled');
+    		input.value = '';
+        body.value = '';
+    		render(data);
+    	});
+    })
 
 })();

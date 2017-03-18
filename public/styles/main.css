@@ -1,19 +1,38 @@
 .blogtitle{
-  width: 60%;
+  width: 50%;
   padding-top: 100px;
   padding-bottom: 20px;
-  margin-left: 200px;
+  /*margin-left: 75px;*/
 
 
 }
 
 .blogpost{
-  width: 60%;
+  width: 50%;
   padding-bottom: 20px;
-  margin-left: 200px;
+  /*margin-left: 75px;*/
 
 }
 
 .Btn{
-  margin-left: 200px;
+  /*margin-left: 75px;*/
+}
+
+.modifyPanel{
+  width: 25%;
+  min-height: auto;
+  border: 2px solid rgba(255, 255, 255, 0.125);
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.025);
+  float: right;
+  margin-right: 50px;
+}
+
+.modifyPanelHeading{
+  text-align: center;
+  text-decoration: underline;
+}
+
+.creatNewHeading{
+
 }
