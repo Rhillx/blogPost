@@ -1,5 +1,5 @@
 .blogtitle{
-  width: 50%;
+  width: 500px;
   padding-top: 100px;
   padding-bottom: 20px;
   /*margin-left: 75px;*/
@@ -8,7 +8,7 @@
 }
 
 .blogpost{
-  width: 50%;
+  width: 500px;
   padding-bottom: 20px;
   /*margin-left: 75px;*/
 
@@ -16,6 +16,17 @@
 
 .Btn{
   /*margin-left: 75px;*/
+}
+
+.flex-row{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.flex-col{
+  width: 60%
 }
 
 .modifyPanel{
@@ -26,6 +37,7 @@
   background-color: rgba(255, 255, 255, 0.025);
   float: right;
   margin-right: 50px;
+  margin-top: 100px;
 }
 
 .modifyPanelHeading{
