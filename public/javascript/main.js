@@ -69,9 +69,17 @@
         });
     } // DELETE
 
-    const styles = ['style1', 'style2', 'style3'];
-    let currentStyle = styles[0];
 
+
+
+    // const style2 = 'alt style2'
+    // const altStyle1 = 'alt style1'
+    const styles = ['style1', 'style2', 'style3'];
+    // let currentStyle = styles[0];
+    let currentStyle = 0;
+
+
+    console.log(styles);
 
     function renderToSite(blogItems) {
 
@@ -79,14 +87,16 @@
 
         if (container !== null) {
             container.innerHTML = "";
-            console.log(container);
+            // console.log(container);
+
             console.log(currentStyle)
 
-
             for (const blogItem of blogItems) {
-                const section = document.querySelector('.js-section');
-                section.innerHTML =
-                    `<div class="inner">
+                const section = document.createElement('section');
+                if (section !== null) {
+
+                    section.innerHTML =
+                        `<div class="inner">
     <a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a>
       <div class="content">
         <h2 class="major">${blogItem.data.title}</h2>
@@ -95,15 +105,22 @@
       </div>
   </div>`;
 
-                section.classList.add('wrapper', 'spotlight', styles[currentStyle]);
-                if (currentStyle === ) {
-                    ''
-                    currentStyle = 0;
-                    container.appendChild(section);
 
+
+                    section.classList.add('wrapper', 'spotlight', styles[currentStyle]);
+                    // for (i = 0; i < styles.length; i++) {
+                    console.log(styles[currentStyle])
+                    if (currentStyle === 2) {
+                        console.log('here right now')
+                        currentStyle = 0;
+                        container.appendChild(section);
+                        // return;
+                    }
+
+                    currentStyle += 1
+                    container.appendChild(section);
+                    // }
                 }
-                currentStyle += 1;
-                container.appendChild(section);
             }
         }
     }
